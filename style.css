@@ -109,12 +109,24 @@ main { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
   background: var(--card);
 }
 
+#phase-pick:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - 200px);
+}
+#phase-pick.pick-16:not([hidden]) {
+  min-height: calc(100dvh - 168px);
+}
+
 /* ---------- roster (accordion) ---------- */
 .roster {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  height: min(62vh, 640px);
+  flex: 1 1 auto;
+  min-height: 220px;
+  height: auto;
+  max-height: none;
   overflow-y: auto;
   overscroll-behavior: contain;
   scroll-behavior: smooth;
@@ -228,13 +240,12 @@ main { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
 
 /* ---------- tray: seven stage marks ---------- */
 .tray {
-  position: sticky;
-  bottom: 0;
+  position: relative;
   z-index: 5;
+  flex: none;
   margin: 12px -16px 0;
   padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
   background: rgba(237, 239, 243, .94);
-  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   gap: 16px;
@@ -252,9 +263,9 @@ main { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
   min-width: 0;
 }
 .tray.wide .slots {
-  grid-template-columns: repeat(8, minmax(32px, 1fr));
-  max-height: 168px;
-  overflow-y: auto;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  max-height: none;
+  overflow: visible;
 }
 .slot {
   position: relative;
@@ -405,10 +416,11 @@ main { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
 /* ---------- small screens ---------- */
 @media (max-width: 720px) {
   .masthead { padding-top: 24px; }
-  .roster { height: 58vh; }
+  #phase-pick:not([hidden]) { min-height: calc(100dvh - 156px); }
+  .roster { min-height: 180px; }
   .gen-body { grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: 10px 8px; padding: 12px; }
   .tray { flex-direction: column; align-items: stretch; gap: 10px; }
-  .tray.wide .slots { max-height: 140px; }
+  .tray.wide .slots { grid-template-columns: repeat(8, minmax(0, 1fr)); max-height: none; }
   .slots { gap: 6px; }
   .duel { gap: 8px; }
   .fighter { padding: 6px 6px 10px; }

@@ -6,7 +6,7 @@
   const BY_ID = new Map();
   GROUPS.forEach((g) => g.members.forEach((m) => { m.group = g.label; BY_ID.set(m.id, m); }));
 
-  function kamiName() { return pick === 16 ? "神16" : "神7"; }
+  function kamiName() { return pick === 16 ? "颜面选拔组" : "神7"; }
   function defaultTitle() { return `我的 AKB48 ${kamiName()}`; }
 
   const $ = (s) => document.querySelector(s);
@@ -207,7 +207,7 @@
       document.querySelectorAll(".seg-size button").forEach((x) => x.setAttribute("aria-checked", x === b));
       pick = next;
       if (state.selected.length > pick) state.selected.length = pick;
-      $("#brand").textContent = kamiName();
+      $("#phase-pick").classList.toggle("pick-16", pick === 16);
       const title = $("#title-input");
       if (!title.dataset.dirty) title.value = defaultTitle();
       renderRoster();
@@ -567,7 +567,7 @@
       if (!blob) return;
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
-      a.download = pick === 16 ? "akb48_kami16.png" : "akb48_kami7.png";
+      a.download = pick === 16 ? "akb48_senbatsu.png" : "akb48_kami7.png";
       a.click();
       setTimeout(() => URL.revokeObjectURL(a.href), 5000);
     }, "image/png");
