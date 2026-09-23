@@ -109,7 +109,8 @@
     },
   };
 
-  let lang = localStorage.getItem("akb-lang") === "en" ? "en" : "zh";
+  let lang = "zh";
+  try { if (localStorage.getItem("akb-lang") === "en") lang = "en"; } catch (_) {}
   const t = (key, ...args) => {
     const v = I18N[lang][key];
     return typeof v === "function" ? v(...args) : v;
@@ -707,9 +708,9 @@
   }
 
   function setLang(next) {
-    if (next === lang) return;
+    if (next !== "en" && next !== "zh") return;
     lang = next;
-    localStorage.setItem("akb-lang", lang);
+    try { localStorage.setItem("akb-lang", lang); } catch (_) {}
     applyStatic();
     renderRoster();
     syncSelection();
@@ -727,8 +728,9 @@
     }
   }
 
-  document.querySelectorAll(".seg-lang [data-lang]").forEach((b) => {
-    b.addEventListener("click", () => setLang(b.dataset.lang));
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-lang]");
+    if (b) setLang(b.dataset.lang);
   });
 
   /* ---------------- boot ---------------- */

@@ -48,8 +48,14 @@ main { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
   justify-content: space-between;
   gap: 16px;
 }
-.masthead-main { min-width: 0; }
-.seg-lang { flex: none; margin-top: 6px; }
+.masthead-main { min-width: 0; position: relative; z-index: 0; }
+.seg-lang {
+  position: relative;
+  z-index: 20;
+  flex: none;
+  margin-top: 6px;
+}
+.seg-lang button { pointer-events: auto; }
 .eyebrow {
   margin: 0;
   font: 700 13px/1 var(--font-jp);
