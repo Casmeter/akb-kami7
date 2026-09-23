@@ -28,7 +28,8 @@ window.AKB_GROUPS = [
     "nick": "CinDy",
     "status": "former",
     "end": "2010.04.16",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "m851d800f25",
@@ -91,7 +92,8 @@ window.AKB_GROUPS = [
     "nick": "ゆかりん",
     "status": "former",
     "end": "2010.05.27",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "m00d0603716",
@@ -136,7 +138,8 @@ window.AKB_GROUPS = [
     "nick": "なっちゃん",
     "status": "former",
     "end": "2012.02.05",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "mc39ff3ea5c",
@@ -227,7 +230,8 @@ window.AKB_GROUPS = [
     "nick": "あやたん",
     "status": "former",
     "end": "2006.06.17",
-    "img": true
+    "img": true,
+    "leave": "脱退"
    },
    {
     "id": "m60c3483f7c",
@@ -236,7 +240,8 @@ window.AKB_GROUPS = [
     "nick": "うめちゃん",
     "status": "former",
     "end": "2014.04.23",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "m3ba08e033b",
@@ -254,7 +259,8 @@ window.AKB_GROUPS = [
     "nick": "めーたん",
     "status": "former",
     "end": "2010.02.21",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "m3fbeb80273",
@@ -317,7 +323,8 @@ window.AKB_GROUPS = [
     "nick": "ノンティ",
     "status": "former",
     "end": "2010.02.21",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "m67970e17a9",
@@ -335,7 +342,8 @@ window.AKB_GROUPS = [
     "nick": "ゆったん",
     "status": "former",
     "end": "2012.12.17",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "ma038d6fe11",
@@ -353,7 +361,8 @@ window.AKB_GROUPS = [
     "nick": "さえ",
     "status": "former",
     "end": "2013.06.24",
-    "img": true
+    "img": true,
+    "leave": "兼任終了"
    }
   ]
  },
@@ -367,7 +376,8 @@ window.AKB_GROUPS = [
     "nick": "",
     "status": "former",
     "end": "2006.12.19",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m696b838edb",
@@ -385,7 +395,8 @@ window.AKB_GROUPS = [
     "nick": "らぶたん",
     "status": "former",
     "end": "2012.10.31",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "md8741be2d9",
@@ -394,7 +405,8 @@ window.AKB_GROUPS = [
     "nick": "",
     "status": "former",
     "end": "2006.12.19",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m4ff5e7f3b7",
@@ -430,7 +442,8 @@ window.AKB_GROUPS = [
     "nick": "",
     "status": "former",
     "end": "2006.12.19",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "mb6e80d55bb",
@@ -448,7 +461,8 @@ window.AKB_GROUPS = [
     "nick": "はるか",
     "status": "former",
     "end": "2012.10.31",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "mfbd235d5a4",
@@ -475,7 +489,8 @@ window.AKB_GROUPS = [
     "nick": "",
     "status": "former",
     "end": "2006.12.19",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m048142f73d",
@@ -484,7 +499,8 @@ window.AKB_GROUPS = [
     "nick": "",
     "status": "former",
     "end": "2006.12.19",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m95f40a0b7b",
@@ -502,7 +518,8 @@ window.AKB_GROUPS = [
     "nick": "よねちゃん",
     "status": "former",
     "end": "2012.02.05",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m64c32528f0",
@@ -525,7 +542,8 @@ window.AKB_GROUPS = [
     "nick": "",
     "status": "former",
     "end": "2007.11.15",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "mbeed3dc3a0",
@@ -552,7 +570,8 @@ window.AKB_GROUPS = [
     "nick": "",
     "status": "former",
     "end": "2007.11.15",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m57e3742184",
@@ -570,7 +589,8 @@ window.AKB_GROUPS = [
     "nick": "",
     "status": "former",
     "end": "2007.11.15",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m8ced0f38a5",
@@ -615,7 +635,8 @@ window.AKB_GROUPS = [
     "nick": "",
     "status": "former",
     "end": "2008.08.26",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "mff65dab2be",
@@ -633,7 +654,8 @@ window.AKB_GROUPS = [
     "nick": "れいにゃん",
     "status": "former",
     "end": "2014.04.23",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "m9d64a7e6c6",
@@ -642,7 +664,8 @@ window.AKB_GROUPS = [
     "nick": "",
     "status": "former",
     "end": "2007.11.15",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "mb7d1942895",
@@ -651,7 +674,8 @@ window.AKB_GROUPS = [
     "nick": "",
     "status": "former",
     "end": "2007.11.15",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    }
   ]
  },
@@ -692,7 +716,8 @@ window.AKB_GROUPS = [
     "nick": "きたりえ",
     "status": "former",
     "end": "2015.08.26",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "ma85bc9bb5f",
@@ -701,7 +726,8 @@ window.AKB_GROUPS = [
     "nick": "はるちゃん",
     "status": "former",
     "end": "2010.04.16",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "m8fc71b5ebc",
@@ -710,7 +736,8 @@ window.AKB_GROUPS = [
     "nick": "さっしー",
     "status": "former",
     "end": "2012.06.16",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "mfeb9540951",
@@ -719,7 +746,8 @@ window.AKB_GROUPS = [
     "nick": "チカリーナ",
     "status": "former",
     "end": "2014.04.16",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "md02f1c2b54",
@@ -773,7 +801,8 @@ window.AKB_GROUPS = [
     "nick": "",
     "status": "former",
     "end": "2007.12.08",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    }
   ]
  },
@@ -787,7 +816,8 @@ window.AKB_GROUPS = [
     "nick": "ゆりちゃん",
     "status": "former",
     "end": "2008.08.31",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m3aecd03c28",
@@ -805,7 +835,8 @@ window.AKB_GROUPS = [
     "nick": "",
     "status": "former",
     "end": "2008.07.31",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m74a279fa70",
@@ -873,7 +904,8 @@ window.AKB_GROUPS = [
     "nick": "すーちゃん",
     "status": "former",
     "end": "2014.04.21",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "me64b4bb3ba",
@@ -1031,7 +1063,8 @@ window.AKB_GROUPS = [
     "nick": "ななみん",
     "status": "former",
     "end": "2009.07.25",
-    "img": true
+    "img": true,
+    "leave": "解雇"
    },
    {
     "id": "m2dde861dda",
@@ -1081,7 +1114,8 @@ window.AKB_GROUPS = [
     "nick": "みなるん",
     "status": "former",
     "end": "2014.04.23",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "mddb8ff6333",
@@ -1162,7 +1196,8 @@ window.AKB_GROUPS = [
     "nick": "なんちゃん",
     "status": "former",
     "end": "2011.09.02",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "mf17a7c90dc",
@@ -1171,7 +1206,8 @@ window.AKB_GROUPS = [
     "nick": "らんらん",
     "status": "former",
     "end": "2014.04.23",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "mdd6413e287",
@@ -1194,7 +1230,8 @@ window.AKB_GROUPS = [
     "nick": "あべまる",
     "status": "former",
     "end": "2017.11.30",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "m2522d89e89",
@@ -1203,7 +1240,8 @@ window.AKB_GROUPS = [
     "nick": "いずりな",
     "status": "former",
     "end": "2017.07.01",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "m02b159931b",
@@ -1212,7 +1250,8 @@ window.AKB_GROUPS = [
     "nick": "みおりん",
     "status": "former",
     "end": "2014.04.23",
-    "img": true
+    "img": true,
+    "leave": "移籍"
    },
    {
     "id": "mff2c4f1a7b",
@@ -1470,7 +1509,8 @@ window.AKB_GROUPS = [
     "nick": "あいみ",
     "status": "former",
     "end": "2013.05.08",
-    "img": true
+    "img": true,
+    "leave": "プロフィール削除"
    }
   ]
  },
@@ -1583,7 +1623,8 @@ window.AKB_GROUPS = [
     "nick": "かおる",
     "status": "former",
     "end": "2012.10.24",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m1563bd2d5c",
@@ -1868,7 +1909,8 @@ window.AKB_GROUPS = [
     "nick": "いずみん",
     "status": "former",
     "end": "2018.11.25",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m06601d2f2b",
@@ -1922,7 +1964,8 @@ window.AKB_GROUPS = [
     "nick": "ななちゃん",
     "status": "former",
     "end": "2017.03.31",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "md55d83823f",
@@ -1931,7 +1974,8 @@ window.AKB_GROUPS = [
     "nick": "はりまちゃん",
     "status": "former",
     "end": "2019.05.11",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m1e7575bee7",
@@ -2071,7 +2115,8 @@ window.AKB_GROUPS = [
     "nick": "にいなん",
     "status": "former",
     "end": "2022.08.28",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    }
   ]
  },
@@ -2690,7 +2735,8 @@ window.AKB_GROUPS = [
     "nick": "はせもも",
     "status": "former",
     "end": "2021.03.26",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m1d8c251a56",
@@ -2861,7 +2907,8 @@ window.AKB_GROUPS = [
     "nick": "ゆいぴょんゆい",
     "status": "former",
     "end": "2015.01.26",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m9350093282",
@@ -3137,7 +3184,8 @@ window.AKB_GROUPS = [
     "nick": "さおりん",
     "status": "former",
     "end": "2019.06.28",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m6eae1770eb",
@@ -3146,7 +3194,8 @@ window.AKB_GROUPS = [
     "nick": "りーたん",
     "status": "former",
     "end": "2018.10.20",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m718a9a4060",
@@ -3182,7 +3231,8 @@ window.AKB_GROUPS = [
     "nick": "しおり",
     "status": "former",
     "end": "2019.11.27",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m387e8eb718",
@@ -3191,7 +3241,8 @@ window.AKB_GROUPS = [
     "nick": "ゆづちゃん",
     "status": "former",
     "end": "2020.11.30",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m342ef1aaee",
@@ -3218,7 +3269,8 @@ window.AKB_GROUPS = [
     "nick": "おと",
     "status": "former",
     "end": "2018.08.22",
-    "img": true
+    "img": true,
+    "leave": "活動辞退"
    },
    {
     "id": "m34b9363a96",
@@ -3269,6 +3321,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2015.05.14",
     "img": true,
+    "leave": "兼任終了",
     "note": "乃木坂46 1期"
    },
    {
@@ -3279,6 +3332,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2013.04.28",
     "img": true,
+    "leave": "兼任終了",
     "note": "SKE48 2期"
    },
    {
@@ -3309,6 +3363,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2018.04.02",
     "img": true,
+    "leave": "兼任終了",
     "note": "SKE48 6期"
    },
    {
@@ -3319,6 +3374,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2015.05.28",
     "img": true,
+    "leave": "兼任終了",
     "note": "NMB48 1期"
    },
    {
@@ -3329,6 +3385,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2018.04.02",
     "img": true,
+    "leave": "兼任終了",
     "note": "HKT48 1期"
    },
    {
@@ -3339,6 +3396,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2018.04.02",
     "img": true,
+    "leave": "兼任終了",
     "note": "NMB48 4期"
    },
    {
@@ -3349,6 +3407,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2018.04.02",
     "img": true,
+    "leave": "兼任終了",
     "note": "NMB48 1期"
    },
    {
@@ -3359,6 +3418,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2018.04.02",
     "img": true,
+    "leave": "兼任終了",
     "note": "HKT48 2期"
    },
    {
@@ -3389,6 +3449,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2015.05.29",
     "img": true,
+    "leave": "兼任終了",
     "note": "SKE48 5期"
    },
    {
@@ -3399,6 +3460,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2015.12.24",
     "img": true,
+    "leave": "兼任終了",
     "note": "SKE48 1期"
    },
    {
@@ -3409,6 +3471,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2018.04.02",
     "img": true,
+    "leave": "兼任終了",
     "note": "HKT48 1期"
    },
    {
@@ -3419,6 +3482,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2015.05.29",
     "img": true,
+    "leave": "兼任終了",
     "note": "NMB48 2期"
    },
    {
@@ -3429,6 +3493,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2018.04.02",
     "img": true,
+    "leave": "兼任終了",
     "note": "HKT48 3期"
    },
    {
@@ -3439,6 +3504,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2016.05.26",
     "img": true,
+    "leave": "兼任終了",
     "note": "NMB48 1期"
    },
    {
@@ -3449,6 +3515,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2016.08.09",
     "img": true,
+    "leave": "兼任終了",
     "note": "NMB48 1期"
    },
    {
@@ -3459,6 +3526,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2018.10.15",
     "img": true,
+    "leave": "留学終了",
     "note": "JKT48 3期"
    },
    {
@@ -3469,6 +3537,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2018.10.15",
     "img": true,
+    "leave": "留学終了",
     "note": "BNK48 1期"
    }
   ]
@@ -3484,6 +3553,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2016.08.10",
     "img": true,
+    "leave": "契約満了",
     "note": "ぱるる選抜"
    },
    {
@@ -3504,6 +3574,7 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2016.08.10",
     "img": true,
+    "leave": "契約満了",
     "note": "ぱるる選抜"
    },
    {

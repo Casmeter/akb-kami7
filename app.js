@@ -106,6 +106,14 @@
       poster_fail: "Could not generate the image. Open this page via http://, not by double-clicking the HTML file.",
       empty_slot: "Empty",
       remove: (name) => `Remove ${name}`,
+      "leave_移籍": "transferred",
+      "leave_兼任終了": "kennin ended",
+      "leave_活動辞退": "withdrew",
+      "leave_契約満了": "contract ended",
+      "leave_脱退": "withdrew",
+      "leave_解雇": "dismissed",
+      "leave_留学終了": "study abroad ended",
+      "leave_プロフィール削除": "profile removed",
     },
   };
 
@@ -147,20 +155,31 @@
   const fullSrc = (m) => `img/full/${m.id}.webp`;
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
-  // members who came from a sister group: leaving AKB48 is not a graduation, so no year
   const isTransfer = (m) => m.group === "兼任・移籍加入";
 
+  function leaveText(reason) {
+    return lang === "en" ? (t("leave_" + reason) || reason) : reason;
+  }
+  function yearLeave(m) {
+    if (m.leave) {
+      const label = leaveText(m.leave);
+      return m.end ? `${m.end.slice(0, 4)} ${label}` : label;
+    }
+    return m.end ? t("grad_year", m.end.slice(0, 4)) : t("graduated");
+  }
   function metaText(m) {
     if (m.status === "current") return t("active");
-    if (isTransfer(m)) return m.note;
-    const year = m.end ? m.end.slice(0, 4) : "";
-    return year ? t("grad_year", year) : t("graduated");
+    if (isTransfer(m) && !m.leave) return m.note;
+    if (isTransfer(m)) return `${m.note} · ${leaveText(m.leave)}`;
+    return yearLeave(m);
   }
   function fullMeta(m) {
-    if (isTransfer(m)) return `${m.note} · ${t("transfer")}`;
-    const parts = [m.note || m.group];
-    parts.push(m.status === "current" ? t("active") : m.end ? t("left_year", m.end.slice(0, 4)) : t("left"));
-    return parts.join(" · ");
+    if (m.status === "current") return `${m.note || m.group} · ${t("active")}`;
+    if (isTransfer(m)) {
+      const extra = m.leave ? leaveText(m.leave) : t("transfer");
+      return `${m.note} · ${extra}`;
+    }
+    return `${m.note || m.group} · ${yearLeave(m)}`;
   }
 
   const state = {
@@ -601,8 +620,11 @@
     const nameSize = fitText(ctx, m.name, w + 10, big ? 44 : rank <= 3 ? 32 : 26, 700, JP_FONT);
     ctx.fillText(m.name, x + w / 2, y + h + nameSize + 14);
     const sub = m.status === "current" ? m.group
-      : isTransfer(m) ? m.note
-      : `${m.group} · ${m.end ? m.end.slice(0, 4) + " " + t("grad_short") : "OG"}`;
+      : isTransfer(m)
+        ? (m.leave ? `${m.note} · ${leaveText(m.leave)}` : m.note)
+        : m.leave
+          ? `${m.group} · ${yearLeave(m)}`
+          : `${m.group} · ${m.end ? m.end.slice(0, 4) + " " + t("grad_short") : "OG"}`;
     const subSize = fitText(ctx, sub, w + 10, big ? 20 : 17, 500, UI_FONT);
     ctx.fillStyle = C.muted;
     ctx.fillText(sub, x + w / 2, y + h + nameSize + subSize + 22);

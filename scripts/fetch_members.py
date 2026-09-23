@@ -61,11 +61,15 @@ def parse_rows(text, status):
             if nick.startswith("style=") or len(nick) > 30:
                 nick = ""
         end = None
+        leave = None
         if status == "former":
             dates = re.findall(r"\{\{年月日\|(\d{4})\|(\d*)\|(\d*)\}\}", chunk)
             if dates:
                 y, mo, d = dates[-1]
                 end = f"{y}.{mo.zfill(2)}.{d.zfill(2)}" if mo else y
+            reason = re.search(r"<br>（([^）]+)）", chunk)
+            if reason:
+                leave = reason.group(1).strip()
         team = re.search(r"\{\{!チーム\|([^}]*)\}\}", chunk)
         rows.append({
             "name": name,
@@ -77,6 +81,7 @@ def parse_rows(text, status):
             "file": f.group(1).strip(),
             "status": status,
             "end": end,
+            "leave": leave,
         })
     return rows
 
@@ -221,6 +226,7 @@ def main():
             "label": label,
             "members": [
                 {k: m[k] for k in ("id", "name", "kana", "nick", "status", "end", "img")}
+                | ({"leave": m["leave"]} if m.get("leave") else {})
                 | ({"note": note_of(m["join"])} if key >= 130 else {})
                 for m in ms
             ],
