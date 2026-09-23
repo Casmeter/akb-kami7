@@ -64,10 +64,11 @@ main { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
   position: relative;
   padding-bottom: 6px;
 }
+.kami.long { font-size: clamp(40px, 8vw, 72px); }
 .kami::after {
   /* stage position tape under the headline */
   content: "";
-  position: absolute; left: 4px; right: 18%; bottom: -4px;
+  position: absolute; left: 4px; right: 8%; bottom: -4px;
   height: 12px;
   background: var(--pink);
   transform: rotate(-1.2deg);
