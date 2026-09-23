@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AKB48 神7 好き顔ソート（含毕业成员）</title>
+<meta name="description" content="从 AKB48 历代成员（含毕业成员）里选出最喜欢的 7 张脸，两两比较排出名次，生成你的神7图片。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="masthead">
+  <p class="eyebrow">AKB48 好き顔ソート</p>
+  <h1><span class="kami">神7</span><span class="sub">历代成员版</span></h1>
+</header>
+
+<main>
+  <!-- 1. pick -->
+  <section id="phase-pick" class="phase">
+    <div class="toolbar">
+      <div class="seg" role="radiogroup" aria-label="成员范围">
+        <button role="radio" aria-checked="true" data-filter="all">全部</button>
+        <button role="radio" aria-checked="false" data-filter="current">现役</button>
+        <button role="radio" aria-checked="false" data-filter="former">已毕业</button>
+      </div>
+      <label class="search">
+        <span class="visually-hidden">搜索成员</span>
+        <input id="search" type="search" placeholder="搜索名字（日文汉字）" autocomplete="off">
+      </label>
+    </div>
+
+    <div id="roster" class="roster" tabindex="-1"></div>
+
+    <div class="tray" id="tray">
+      <ol class="slots" id="slots" aria-label="已选成员"></ol>
+      <button id="start-btn" class="primary" disabled>还差 7 位</button>
+    </div>
+  </section>
+
+  <!-- 2. duel -->
+  <section id="phase-duel" class="phase" hidden>
+    <div class="duel-head">
+      <h2>更喜欢哪张脸？</h2>
+      <p class="duel-progress"><span id="duel-step">1</span> / 最多 <span id="duel-max">14</span> 题</p>
+      <div class="bar"><i id="duel-bar"></i></div>
+    </div>
+    <div class="duel">
+      <button class="fighter" id="fighter-a" data-side="0"></button>
+      <span class="or" aria-hidden="true">or</span>
+      <button class="fighter" id="fighter-b" data-side="1"></button>
+    </div>
+    <div class="duel-actions">
+      <button id="undo-btn" class="ghost" disabled>撤回上一题</button>
+      <button id="back-pick-btn" class="ghost">重新选人</button>
+    </div>
+    <p class="hint">键盘可用 ← → 选择，Z 撤回</p>
+  </section>
+
+  <!-- 3. result -->
+  <section id="phase-result" class="phase" hidden>
+    <div class="result-grid">
+      <figure class="poster">
+        <img id="poster-img" alt="我的神7排名图">
+        <figcaption>手机上可以长按图片保存</figcaption>
+      </figure>
+      <div class="result-side">
+        <label class="field">
+          <span>标题</span>
+          <input id="title-input" type="text" maxlength="24" value="我的 AKB48 神7">
+        </label>
+        <ol class="rank-list" id="rank-list"></ol>
+        <div class="result-actions">
+          <button id="save-btn" class="primary">保存图片</button>
+          <button id="share-btn" class="ghost">分享到 X</button>
+          <button id="resort-btn" class="ghost">这 7 位重新排序</button>
+          <button id="restart-btn" class="ghost">重新选人</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="colophon">
+  成员名单与照片来自 <a href="https://48pedia.org/" target="_blank" rel="noopener">エケペディア（48pedia）</a>，版权归原权利人所有。灵感来自
+  <a href="https://sahooniduka.github.io/AKB48-Sukigao/" target="_blank" rel="noopener">AKB48 神7 好き顔ソート</a>。
+</footer>
+
+<canvas id="poster-canvas" width="1080" height="1440" hidden></canvas>
+<script src="members.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

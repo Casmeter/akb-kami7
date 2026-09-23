@@ -1,0 +1,3 @@
+scripts/_orig/
+scripts/_*.wiki
+__pycache__/
