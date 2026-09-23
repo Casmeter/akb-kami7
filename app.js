@@ -1,10 +1,13 @@
 (() => {
   "use strict";
 
-  const PICK = 7;
+  let pick = 7;
   const GROUPS = window.AKB_GROUPS || [];
   const BY_ID = new Map();
   GROUPS.forEach((g) => g.members.forEach((m) => { m.group = g.label; BY_ID.set(m.id, m); }));
+
+  function kamiName() { return pick === 16 ? "神16" : "神7"; }
+  function defaultTitle() { return `我的 AKB48 ${kamiName()}`; }
 
   const $ = (s) => document.querySelector(s);
   const thumbSrc = (m) => `img/thumb/${m.id}.webp`;
@@ -133,7 +136,7 @@
     const i = state.selected.indexOf(id);
     if (i >= 0) {
       state.selected.splice(i, 1);
-    } else if (state.selected.length >= PICK) {
+    } else if (state.selected.length >= pick) {
       const tray = $("#tray");
       tray.classList.remove("shake");
       void tray.offsetWidth;
@@ -155,20 +158,22 @@
       const n = pickedIn(GROUPS[sec.dataset.gi]);
       sec.querySelector(".gen-picked").textContent = n ? `已选 ${n}` : "";
     });
-    roster.classList.toggle("full", state.selected.length >= PICK);
+    roster.classList.toggle("full", state.selected.length >= pick);
     renderTray();
   }
 
   function renderTray() {
     const slots = [];
-    for (let i = 0; i < PICK; i++) {
+    for (let i = 0; i < pick; i++) {
       const m = BY_ID.get(state.selected[i]);
       slots.push(m
-        ? `<li class="slot"><button data-remove="${m.id}" aria-label="移除 ${esc(m.name)}" title="移除 ${esc(m.name)}"><img src="${thumbSrc(m)}" alt="${esc(m.name)}"></button></li>`
+        ? `<li class="slot"><button type="button" data-remove="${m.id}" aria-label="移除 ${esc(m.name)}" title="点这里去掉 ${esc(m.name)}"><img src="${thumbSrc(m)}" alt="${esc(m.name)}"></button></li>`
         : `<li class="slot empty-slot" aria-label="空位"></li>`);
     }
     $("#slots").innerHTML = slots.join("");
-    const left = PICK - state.selected.length;
+    $("#tray").classList.toggle("wide", pick === 16);
+    $("#slots").style.setProperty("--slots", String(pick === 16 ? 8 : 7));
+    const left = pick - state.selected.length;
     const btn = $("#start-btn");
     btn.disabled = left > 0;
     btn.textContent = left > 0 ? `还差 ${left} 位` : "开始排序";
@@ -186,14 +191,31 @@
     if (b) toggleMember(b.dataset.remove);
   });
 
-  document.querySelectorAll(".seg button").forEach((b) => {
+  document.querySelectorAll(".seg-filter button").forEach((b) => {
     b.addEventListener("click", () => {
-      document.querySelectorAll(".seg button").forEach((x) => x.setAttribute("aria-checked", x === b));
+      document.querySelectorAll(".seg-filter button").forEach((x) => x.setAttribute("aria-checked", x === b));
       state.filter = b.dataset.filter;
       renderRoster();
       syncSelection();
     });
   });
+
+  document.querySelectorAll(".seg-size button").forEach((b) => {
+    b.addEventListener("click", () => {
+      const next = +b.dataset.pick;
+      if (next === pick) return;
+      document.querySelectorAll(".seg-size button").forEach((x) => x.setAttribute("aria-checked", x === b));
+      pick = next;
+      if (state.selected.length > pick) state.selected.length = pick;
+      $("#brand").textContent = kamiName();
+      const title = $("#title-input");
+      if (!title.dataset.dirty) title.value = defaultTitle();
+      renderRoster();
+      syncSelection();
+    });
+  });
+
+  $("#title-input").addEventListener("change", () => { $("#title-input").dataset.dirty = "1"; });
 
   let searchTimer;
   $("#search").addEventListener("input", (e) => {
@@ -328,7 +350,7 @@
   $("#restart-btn").addEventListener("click", backToPick);
   $("#save-btn").addEventListener("click", savePoster);
   $("#share-btn").addEventListener("click", () => {
-    const text = `${$("#title-input").value.trim() || "我的 AKB48 神7"}\n\n` +
+    const text = `${$("#title-input").value.trim() || defaultTitle()}\n\n` +
       ranking.map((m, i) => `${i + 1}. ${m.name}`).join("\n") + "\n\n#AKB48 #好き顔ソート";
     const url = location.protocol.startsWith("http") && !/^(localhost|127\.)/.test(location.hostname) ? location.href.split("#")[0] : "";
     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}${url ? "&url=" + encodeURIComponent(url) : ""}`, "_blank", "noopener");
@@ -446,15 +468,30 @@
     ctx.fillText(m.name, x + w / 2, y + h + nameSize + 14);
     const sub = m.status === "current" ? m.group
       : isTransfer(m) ? m.note
-      : `${m.group} · ${m.end ? m.end.slice(0, 4) + "卒" : "OG"}`;
+      : `${m.group} · ${m.end ? m.end.slice(0, 4) + "卒业" : "OG"}`;
     const subSize = fitText(ctx, sub, w + 10, big ? 20 : 17, 500, UI_FONT);
     ctx.fillStyle = C.muted;
     ctx.fillText(sub, x + w / 2, y + h + nameSize + subSize + 22);
   }
 
+  function placeRow(ctx, imgs, start, count, y, w, h, gap) {
+    const total = count * w + (count - 1) * gap;
+    let x = (ctx.canvas.width - total) / 2;
+    for (let i = 0; i < count; i++) {
+      const idx = start + i;
+      if (!ranking[idx]) continue;
+      slot(ctx, imgs[idx], ranking[idx], idx + 1, x, y, w, h, false);
+      x += w + gap;
+    }
+  }
+
   async function drawPoster() {
     if (!ranking.length) return;
     const canvas = $("#poster-canvas");
+    const tall = ranking.length > 7;
+    canvas.width = 1080;
+    canvas.height = tall ? 1920 : 1440;
+    $("#poster").classList.toggle("tall", tall);
     const ctx = canvas.getContext("2d");
     const W = canvas.width, H = canvas.height;
     const [imgs] = await Promise.all([Promise.all(ranking.map((m) => loadImg(fullSrc(m)))), fontsReady()]);
@@ -462,36 +499,45 @@
     ctx.fillStyle = C.floor;
     ctx.fillRect(0, 0, W, H);
 
-    // title
-    const title = $("#title-input").value.trim() || "我的 AKB48 神7";
+    const title = $("#title-input").value.trim() || defaultTitle();
     ctx.textAlign = "left";
     ctx.textBaseline = "alphabetic";
     ctx.fillStyle = C.ink;
-    fitText(ctx, title, W - 144, 64, 900, UI_FONT);
-    ctx.fillText(title, 72, 118);
-    tape(ctx, 72, 136, Math.min(ctx.measureText(title).width * 0.72, 520), 12, C.pink, -0.012);
+    fitText(ctx, title, W - 144, tall ? 56 : 64, 900, UI_FONT);
+    ctx.fillText(title, 72, tall ? 100 : 118);
+    tape(ctx, 72, tall ? 116 : 136, Math.min(ctx.measureText(title).width * 0.72, 520), 12, C.pink, -0.012);
     ctx.font = `500 24px ${UI_FONT}`;
     ctx.fillStyle = C.muted;
     const d = new Date();
-    ctx.fillText(`AKB48 好き顔ソート · ${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}`, 72, 190);
+    ctx.fillText(`AKB48 好き顔ソート · ${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}`, 72, tall ? 168 : 190);
 
-    // formation: front row 2-1-3, back row 4-5-6-7
-    const fy = 262;
-    const bigW = 392, bigH = 523, sideW = 272, sideH = 363, gap = 22;
-    const fx = (W - (bigW + sideW * 2 + gap * 2)) / 2;
-    const sideY = fy + bigH - sideH;
-    slot(ctx, imgs[1], ranking[1], 2, fx, sideY, sideW, sideH, false);
-    slot(ctx, imgs[2], ranking[2], 3, fx + sideW + gap + bigW + gap, sideY, sideW, sideH, false);
-    slot(ctx, imgs[0], ranking[0], 1, fx + sideW + gap, fy, bigW, bigH, true);
+    if (!tall) {
+      const fy = 262;
+      const bigW = 392, bigH = 523, sideW = 272, sideH = 363, gap = 22;
+      const fx = (W - (bigW + sideW * 2 + gap * 2)) / 2;
+      const sideY = fy + bigH - sideH;
+      if (ranking[1]) slot(ctx, imgs[1], ranking[1], 2, fx, sideY, sideW, sideH, false);
+      if (ranking[2]) slot(ctx, imgs[2], ranking[2], 3, fx + sideW + gap + bigW + gap, sideY, sideW, sideH, false);
+      slot(ctx, imgs[0], ranking[0], 1, fx + sideW + gap, fy, bigW, bigH, true);
+      const by = fy + bigH + 150;
+      const backW = 216, backH = 288, bgap = 26;
+      placeRow(ctx, imgs, 3, 4, by, backW, backH, bgap);
+    } else {
+      // 3 / 6 / 7
+      const fy = 210;
+      const bigW = 300, bigH = 400, sideW = 220, sideH = 294, gap = 18;
+      const fx = (W - (bigW + sideW * 2 + gap * 2)) / 2;
+      const sideY = fy + bigH - sideH;
+      if (ranking[1]) slot(ctx, imgs[1], ranking[1], 2, fx, sideY, sideW, sideH, false);
+      if (ranking[2]) slot(ctx, imgs[2], ranking[2], 3, fx + sideW + gap + bigW + gap, sideY, sideW, sideH, false);
+      slot(ctx, imgs[0], ranking[0], 1, fx + sideW + gap, fy, bigW, bigH, true);
 
-    const by = fy + bigH + 150;
-    const backW = 216, backH = 288, bgap = 26;
-    const bx = (W - (backW * 4 + bgap * 3)) / 2;
-    for (let i = 3; i < 7; i++) {
-      slot(ctx, imgs[i], ranking[i], i + 1, bx + (i - 3) * (backW + bgap), by, backW, backH, false);
+      const midY = fy + bigH + 92;
+      placeRow(ctx, imgs, 3, 6, midY, 148, 198, 14);
+      const backY = midY + 198 + 78;
+      placeRow(ctx, imgs, 9, 7, backY, 128, 170, 12);
     }
 
-    // footer
     ctx.strokeStyle = C.line;
     ctx.lineWidth = 2;
     ctx.beginPath();
@@ -521,7 +567,7 @@
       if (!blob) return;
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
-      a.download = "akb48_kami7.png";
+      a.download = pick === 16 ? "akb48_kami16.png" : "akb48_kami7.png";
       a.click();
       setTimeout(() => URL.revokeObjectURL(a.href), 5000);
     }, "image/png");

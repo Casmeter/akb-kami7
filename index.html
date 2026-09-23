@@ -13,14 +13,18 @@
 <body>
 <header class="masthead">
   <p class="eyebrow">AKB48 好き顔ソート</p>
-  <h1><span class="kami">神7</span><span class="sub">历代成员版</span></h1>
+  <h1><span class="kami" id="brand">神7</span><span class="sub">历代成员版</span></h1>
 </header>
 
 <main>
   <!-- 1. pick -->
   <section id="phase-pick" class="phase">
     <div class="toolbar">
-      <div class="seg" role="radiogroup" aria-label="成员范围">
+      <div class="seg seg-size" role="radiogroup" aria-label="人数">
+        <button role="radio" aria-checked="true" data-pick="7">神7</button>
+        <button role="radio" aria-checked="false" data-pick="16">神16</button>
+      </div>
+      <div class="seg seg-filter" role="radiogroup" aria-label="成员范围">
         <button role="radio" aria-checked="true" data-filter="all">全部</button>
         <button role="radio" aria-checked="false" data-filter="current">现役</button>
         <button role="radio" aria-checked="false" data-filter="former">已毕业</button>
@@ -34,7 +38,10 @@
     <div id="roster" class="roster" tabindex="-1"></div>
 
     <div class="tray" id="tray">
-      <ol class="slots" id="slots" aria-label="已选成员"></ol>
+      <div class="tray-main">
+        <ol class="slots" id="slots" aria-label="已选成员"></ol>
+        <p class="tray-hint">点底部头像即可去掉，再选别人</p>
+      </div>
       <button id="start-btn" class="primary" disabled>还差 7 位</button>
     </div>
   </section>
@@ -61,8 +68,8 @@
   <!-- 3. result -->
   <section id="phase-result" class="phase" hidden>
     <div class="result-grid">
-      <figure class="poster">
-        <img id="poster-img" alt="我的神7排名图">
+      <figure class="poster" id="poster">
+        <img id="poster-img" alt="我的排名图">
         <figcaption>手机上可以长按图片保存</figcaption>
       </figure>
       <div class="result-side">
@@ -74,7 +81,7 @@
         <div class="result-actions">
           <button id="save-btn" class="primary">保存图片</button>
           <button id="share-btn" class="ghost">分享到 X</button>
-          <button id="resort-btn" class="ghost">这 7 位重新排序</button>
+          <button id="resort-btn" class="ghost">这几位重新排序</button>
           <button id="restart-btn" class="ghost">重新选人</button>
         </div>
       </div>
