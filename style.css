@@ -43,7 +43,13 @@ main { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
   max-width: 1040px;
   margin: 0 auto;
   padding: 36px 16px 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
 }
+.masthead-main { min-width: 0; }
+.seg-lang { flex: none; margin-top: 6px; }
 .eyebrow {
   margin: 0;
   font: 700 13px/1 var(--font-jp);

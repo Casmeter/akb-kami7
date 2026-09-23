@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AKB48 神7 好き顔ソート（含毕业成员）</title>
+<title data-i18n="doc_title">AKB48 神7 好き顔ソート（含毕业成员）</title>
 <meta name="description" content="从 AKB48 历代成员（含毕业成员）里选出最喜欢的 7 张脸，两两比较排出名次，生成你的神7图片。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,8 +12,14 @@
 </head>
 <body>
 <header class="masthead">
-  <p class="eyebrow">AKB48 好き顔ソート</p>
-  <h1><span class="kami" id="brand">神7</span><span class="sub">历代成员版</span></h1>
+  <div class="masthead-main">
+    <p class="eyebrow">AKB48 好き顔ソート</p>
+    <h1><span class="kami" id="brand">神7</span><span class="sub" data-i18n="subtitle">历代成员版</span></h1>
+  </div>
+  <div class="seg seg-lang" role="radiogroup" aria-label="Language">
+    <button type="button" role="radio" aria-checked="true" data-lang="zh">中</button>
+    <button type="button" role="radio" aria-checked="false" data-lang="en">EN</button>
+  </div>
 </header>
 
 <main>
@@ -21,17 +27,17 @@
   <section id="phase-pick" class="phase">
     <div class="toolbar">
       <div class="seg seg-size" role="radiogroup" aria-label="人数">
-        <button role="radio" aria-checked="true" data-pick="7">神7</button>
-        <button role="radio" aria-checked="false" data-pick="16">16人版</button>
+        <button role="radio" aria-checked="true" data-pick="7" data-i18n="mode_7">神7</button>
+        <button role="radio" aria-checked="false" data-pick="16" data-i18n="mode_16">16人版</button>
       </div>
       <div class="seg seg-filter" role="radiogroup" aria-label="成员范围">
-        <button role="radio" aria-checked="true" data-filter="all">全部</button>
-        <button role="radio" aria-checked="false" data-filter="current">现役</button>
-        <button role="radio" aria-checked="false" data-filter="former">已毕业</button>
+        <button role="radio" aria-checked="true" data-filter="all" data-i18n="filter_all">全部</button>
+        <button role="radio" aria-checked="false" data-filter="current" data-i18n="filter_current">现役</button>
+        <button role="radio" aria-checked="false" data-filter="former" data-i18n="filter_former">已毕业</button>
       </div>
       <label class="search">
-        <span class="visually-hidden">搜索成员</span>
-        <input id="search" type="search" placeholder="搜索名字（日文汉字）" autocomplete="off">
+        <span class="visually-hidden" data-i18n="search_label">搜索成员</span>
+        <input id="search" type="search" data-i18n-placeholder="search_ph" placeholder="搜索名字（日文汉字）" autocomplete="off">
       </label>
     </div>
 
@@ -40,7 +46,7 @@
     <div class="tray" id="tray">
       <div class="tray-main">
         <ol class="slots" id="slots" aria-label="已选成员"></ol>
-        <p class="tray-hint">点底部头像即可去掉，再选别人</p>
+        <p class="tray-hint" data-i18n="tray_hint">点底部头像即可去掉，再选别人</p>
       </div>
       <button id="start-btn" class="primary" disabled>还差 7 位</button>
     </div>
@@ -49,8 +55,8 @@
   <!-- 2. duel -->
   <section id="phase-duel" class="phase" hidden>
     <div class="duel-head">
-      <h2>更喜欢哪张脸？</h2>
-      <p class="duel-progress"><span id="duel-step">1</span> / 最多 <span id="duel-max">14</span> 题</p>
+      <h2 data-i18n="duel_title">更喜欢哪张脸？</h2>
+      <p class="duel-progress"><span id="duel-step">1</span><span data-i18n="duel_mid"> / 最多 </span><span id="duel-max">14</span><span data-i18n="duel_end"> 题</span></p>
       <div class="bar"><i id="duel-bar"></i></div>
     </div>
     <div class="duel">
@@ -59,30 +65,30 @@
       <button class="fighter" id="fighter-b" data-side="1"></button>
     </div>
     <div class="duel-actions">
-      <button id="undo-btn" class="ghost" disabled>撤回上一题</button>
-      <button id="back-pick-btn" class="ghost">重新选人</button>
+      <button id="undo-btn" class="ghost" disabled data-i18n="undo">撤回上一题</button>
+      <button id="back-pick-btn" class="ghost" data-i18n="reselect">重新选人</button>
     </div>
-    <p class="hint">键盘可用 ← → 选择，Z 撤回</p>
+    <p class="hint" data-i18n="keys">键盘可用 ← → 选择，Z 撤回</p>
   </section>
 
   <!-- 3. result -->
   <section id="phase-result" class="phase" hidden>
     <div class="result-grid">
       <figure class="poster" id="poster">
-        <img id="poster-img" alt="我的排名图">
-        <figcaption>手机上可以长按图片保存</figcaption>
+        <img id="poster-img" alt="我的排名图" data-i18n-alt="poster_alt">
+        <figcaption data-i18n="longpress">手机上可以长按图片保存</figcaption>
       </figure>
       <div class="result-side">
         <label class="field">
-          <span>标题</span>
+          <span data-i18n="title_label">标题</span>
           <input id="title-input" type="text" maxlength="24" value="我的 AKB48 神7">
         </label>
         <ol class="rank-list" id="rank-list"></ol>
         <div class="result-actions">
-          <button id="save-btn" class="primary">保存图片</button>
-          <button id="share-btn" class="ghost">分享到 X</button>
-          <button id="resort-btn" class="ghost">这几位重新排序</button>
-          <button id="restart-btn" class="ghost">重新选人</button>
+          <button id="save-btn" class="primary" data-i18n="save">保存图片</button>
+          <button id="share-btn" class="ghost" data-i18n="share">分享到 X</button>
+          <button id="resort-btn" class="ghost" data-i18n="resort">这几位重新排序</button>
+          <button id="restart-btn" class="ghost" data-i18n="reselect">重新选人</button>
         </div>
       </div>
     </div>
@@ -90,7 +96,9 @@
 </main>
 
 <footer class="colophon">
-  成员名单与照片来自 <a href="https://48pedia.org/" target="_blank" rel="noopener">エケペディア（48pedia）</a>，版权归原权利人所有。灵感来自
+  <span data-i18n="credit_1">成员名单与照片来自</span>
+  <a href="https://48pedia.org/" target="_blank" rel="noopener">エケペディア（48pedia）</a>
+  <span data-i18n="credit_2">，版权归原权利人所有。灵感来自</span>
   <a href="https://sahooniduka.github.io/AKB48-Sukigao/" target="_blank" rel="noopener">AKB48 神7 好き顔ソート</a>。
 </footer>
 

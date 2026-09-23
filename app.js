@@ -6,8 +6,140 @@
   const BY_ID = new Map();
   GROUPS.forEach((g) => g.members.forEach((m) => { m.group = g.label; BY_ID.set(m.id, m); }));
 
-  function kamiName() { return pick === 16 ? "选拔组" : "神7"; }
-  function defaultTitle() { return `我的 AKB48 ${kamiName()}`; }
+  const I18N = {
+    zh: {
+      doc_title: "AKB48 神7 好き顔ソート（含毕业成员）",
+      subtitle: "历代成员版",
+      mode_7: "神7",
+      mode_16: "16人版",
+      brand_7: "神7",
+      brand_16: "选拔组",
+      title_7: "我的 AKB48 神7",
+      title_16: "我的 AKB48 选拔组",
+      filter_all: "全部",
+      filter_current: "现役",
+      filter_former: "已毕业",
+      search_label: "搜索成员",
+      search_ph: "搜索名字（日文汉字）",
+      tray_hint: "点底部头像即可去掉，再选别人",
+      need: (n) => `还差 ${n} 位`,
+      start: "开始排序",
+      people: (n) => `${n} 人`,
+      people_now: (n, now) => `${n} 人 · 现役 ${now}`,
+      picked: (n) => `已选 ${n}`,
+      empty_filter: "这个范围里没有成员。",
+      found: (n) => `找到 ${n} 位`,
+      empty_search: (q) => `没有找到“${q}”。请用日文汉字输入，例如 渡辺麻友；或者切换到“全部”。`,
+      active: "现役",
+      grad_year: (y) => `${y} 毕业`,
+      graduated: "已毕业",
+      left_year: (y) => `${y} 年离开`,
+      left: "已离开",
+      transfer: "兼任/移籍",
+      grad_short: "卒业",
+      duel_title: "更喜欢哪张脸？",
+      duel_mid: " / 最多 ",
+      duel_end: " 题",
+      undo: "撤回上一题",
+      reselect: "重新选人",
+      keys: "键盘可用 ← → 选择，Z 撤回",
+      pick_who: (name) => `选 ${name}`,
+      poster_alt: "我的排名图",
+      longpress: "手机上可以长按图片保存",
+      title_label: "标题",
+      save: "保存图片",
+      share: "分享到 X",
+      resort: "这几位重新排序",
+      credit_1: "成员名单与照片来自",
+      credit_2: "，版权归原权利人所有。灵感来自",
+      photo_src: "照片：48pedia.org",
+      poster_fail: "图片生成失败：请通过网址（http://）打开本页，而不是直接双击 html 文件。",
+      empty_slot: "空位",
+      remove: (name) => `点这里去掉 ${name}`,
+    },
+    en: {
+      doc_title: "AKB48 Kami 7 Face Sort (all generations)",
+      subtitle: "All generations",
+      mode_7: "Kami 7",
+      mode_16: "16 members",
+      brand_7: "Kami 7",
+      brand_16: "Senbatsu",
+      title_7: "My AKB48 Kami 7",
+      title_16: "My AKB48 Senbatsu",
+      filter_all: "All",
+      filter_current: "Active",
+      filter_former: "Graduated",
+      search_label: "Search members",
+      search_ph: "Search by name (Japanese kanji)",
+      tray_hint: "Tap a selected face below to remove her",
+      need: (n) => `${n} more`,
+      start: "Start ranking",
+      people: (n) => `${n}`,
+      people_now: (n, now) => `${n} · ${now} active`,
+      picked: (n) => `${n} picked`,
+      empty_filter: "No members in this filter.",
+      found: (n) => `${n} found`,
+      empty_search: (q) => `No results for “${q}”. Type Japanese kanji, e.g. 渡辺麻友, or switch to All.`,
+      active: "Active",
+      grad_year: (y) => `Grad. ${y}`,
+      graduated: "Graduated",
+      left_year: (y) => `Left ${y}`,
+      left: "Left",
+      transfer: "concurrent / transfer",
+      grad_short: "grad.",
+      duel_title: "Which face do you like more?",
+      duel_mid: " / up to ",
+      duel_end: "",
+      undo: "Undo last",
+      reselect: "Pick again",
+      keys: "← → to choose, Z to undo",
+      pick_who: (name) => `Choose ${name}`,
+      poster_alt: "My ranking image",
+      longpress: "On a phone, long-press the image to save",
+      title_label: "Title",
+      save: "Save image",
+      share: "Share on X",
+      resort: "Re-rank these members",
+      credit_1: "Names and photos from",
+      credit_2: ". Copyright belongs to the original owners. Inspired by",
+      photo_src: "Photos: 48pedia.org",
+      poster_fail: "Could not generate the image. Open this page via http://, not by double-clicking the HTML file.",
+      empty_slot: "Empty",
+      remove: (name) => `Remove ${name}`,
+    },
+  };
+
+  let lang = localStorage.getItem("akb-lang") === "en" ? "en" : "zh";
+  const t = (key, ...args) => {
+    const v = I18N[lang][key];
+    return typeof v === "function" ? v(...args) : v;
+  };
+  function kamiName() { return pick === 16 ? t("brand_16") : t("brand_7"); }
+  function defaultTitle() { return pick === 16 ? t("title_16") : t("title_7"); }
+
+  function applyStatic() {
+    document.documentElement.lang = lang === "en" ? "en" : "zh-CN";
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.dataset.i18n;
+      if (I18N[lang][key] != null) el.textContent = t(key);
+    });
+    document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+      el.placeholder = t(el.dataset.i18nPlaceholder);
+    });
+    document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+      el.alt = t(el.dataset.i18nAlt);
+    });
+    document.querySelectorAll(".seg-lang [data-lang]").forEach((b) => {
+      b.setAttribute("aria-checked", b.dataset.lang === lang);
+    });
+    const brand = $("#brand");
+    if (brand) {
+      brand.textContent = kamiName();
+      brand.classList.toggle("long", pick === 16 || lang === "en");
+    }
+    const title = $("#title-input");
+    if (title && !title.dataset.dirty) title.value = defaultTitle();
+  }
 
   const $ = (s) => document.querySelector(s);
   const thumbSrc = (m) => `img/thumb/${m.id}.webp`;
@@ -18,15 +150,15 @@
   const isTransfer = (m) => m.group === "兼任・移籍加入";
 
   function metaText(m) {
-    if (m.status === "current") return "现役";
+    if (m.status === "current") return t("active");
     if (isTransfer(m)) return m.note;
     const year = m.end ? m.end.slice(0, 4) : "";
-    return year ? `${year} 毕业` : "已毕业";
+    return year ? t("grad_year", year) : t("graduated");
   }
   function fullMeta(m) {
-    if (isTransfer(m)) return `${m.note} · 兼任/移籍`;
+    if (isTransfer(m)) return `${m.note} · ${t("transfer")}`;
     const parts = [m.note || m.group];
-    parts.push(m.status === "current" ? "现役" : m.end ? `${m.end.slice(0, 4)} 年离开` : "已离开");
+    parts.push(m.status === "current" ? t("active") : m.end ? t("left_year", m.end.slice(0, 4)) : t("left"));
     return parts.join(" · ");
   }
 
@@ -76,19 +208,19 @@
       if (!ms.length) return;
       const open = state.open.has(gi);
       const now = ms.filter((m) => m.status === "current").length;
-      const count = state.filter === "all" && now ? `${ms.length} 人 · 现役 ${now}` : `${ms.length} 人`;
+      const count = state.filter === "all" && now ? t("people_now", ms.length, now) : t("people", ms.length);
       const picked = pickedIn(g);
       html.push(`<section class="gen" data-gi="${gi}">
         <button class="gen-head" aria-expanded="${open}" aria-controls="gen-${gi}">
           <i class="chev" aria-hidden="true"></i>
           <span class="gen-name">${esc(g.label)}</span>
           <span class="gen-count">${count}</span>
-          <span class="gen-picked">${picked ? "已选 " + picked : ""}</span>
+          <span class="gen-picked">${picked ? t("picked", picked) : ""}</span>
         </button>
         <div class="gen-body" id="gen-${gi}" ${open ? "" : "hidden"}>${open ? ms.map(cardHTML).join("") : ""}</div>
       </section>`);
     });
-    roster.innerHTML = html.join("") || `<p class="empty">这个范围里没有成员。</p>`;
+    roster.innerHTML = html.join("") || `<p class="empty">${t("empty_filter")}</p>`;
   }
 
   // variant kanji people often type with the common form (山崎 → 山﨑, 高橋 → 髙橋)
@@ -108,8 +240,8 @@
       }
     }
     roster.innerHTML = hits.length
-      ? `<p class="search-hint">找到 ${hits.length} 位</p><div class="gen-body">${hits.map(cardHTML).join("")}</div>`
-      : `<p class="empty">没有找到“${esc(state.query)}”。请用日文汉字输入，例如 渡辺麻友；或者切换到“全部”。</p>`;
+      ? `<p class="search-hint">${t("found", hits.length)}</p><div class="gen-body">${hits.map(cardHTML).join("")}</div>`
+      : `<p class="empty">${t("empty_search", esc(state.query))}</p>`;
   }
 
   function toggleGroup(gi) {
@@ -156,7 +288,7 @@
     });
     roster.querySelectorAll(".gen").forEach((sec) => {
       const n = pickedIn(GROUPS[sec.dataset.gi]);
-      sec.querySelector(".gen-picked").textContent = n ? `已选 ${n}` : "";
+      sec.querySelector(".gen-picked").textContent = n ? t("picked", n) : "";
     });
     roster.classList.toggle("full", state.selected.length >= pick);
     renderTray();
@@ -167,8 +299,8 @@
     for (let i = 0; i < pick; i++) {
       const m = BY_ID.get(state.selected[i]);
       slots.push(m
-        ? `<li class="slot"><button type="button" data-remove="${m.id}" aria-label="移除 ${esc(m.name)}" title="点这里去掉 ${esc(m.name)}"><img src="${thumbSrc(m)}" alt="${esc(m.name)}"></button></li>`
-        : `<li class="slot empty-slot" aria-label="空位"></li>`);
+        ? `<li class="slot"><button type="button" data-remove="${m.id}" aria-label="${esc(t("remove", m.name))}" title="${esc(t("remove", m.name))}"><img src="${thumbSrc(m)}" alt="${esc(m.name)}"></button></li>`
+        : `<li class="slot empty-slot" aria-label="${t("empty_slot")}"></li>`);
     }
     $("#slots").innerHTML = slots.join("");
     $("#tray").classList.toggle("wide", pick === 16);
@@ -176,7 +308,7 @@
     const left = pick - state.selected.length;
     const btn = $("#start-btn");
     btn.disabled = left > 0;
-    btn.textContent = left > 0 ? `还差 ${left} 位` : "开始排序";
+    btn.textContent = left > 0 ? t("need", left) : t("start");
   }
 
   roster.addEventListener("click", (e) => {
@@ -207,9 +339,8 @@
       document.querySelectorAll(".seg-size button").forEach((x) => x.setAttribute("aria-checked", x === b));
       pick = next;
       if (state.selected.length > pick) state.selected.length = pick;
-      $("#brand").textContent = kamiName();
-      $("#brand").classList.toggle("long", pick === 16);
       $("#phase-pick").classList.toggle("pick-16", pick === 16);
+      applyStatic();
       const title = $("#title-input");
       if (!title.dataset.dirty) title.value = defaultTitle();
       renderRoster();
@@ -290,7 +421,7 @@
       <span class="nm">${esc(m.name)}</span>
       <span class="kn">${esc(m.kana)}</span>
       <span class="meta">${esc(fullMeta(m))}</span>`;
-    el.setAttribute("aria-label", `选 ${m.name}`);
+    el.setAttribute("aria-label", t("pick_who", m.name));
   }
 
   let answering = false;
@@ -470,7 +601,7 @@
     ctx.fillText(m.name, x + w / 2, y + h + nameSize + 14);
     const sub = m.status === "current" ? m.group
       : isTransfer(m) ? m.note
-      : `${m.group} · ${m.end ? m.end.slice(0, 4) + "卒业" : "OG"}`;
+      : `${m.group} · ${m.end ? m.end.slice(0, 4) + " " + t("grad_short") : "OG"}`;
     const subSize = fitText(ctx, sub, w + 10, big ? 20 : 17, 500, UI_FONT);
     ctx.fillStyle = C.muted;
     ctx.fillText(sub, x + w / 2, y + h + nameSize + subSize + 22);
@@ -553,12 +684,12 @@
     ctx.textAlign = "right";
     ctx.font = `500 18px ${UI_FONT}`;
     ctx.fillStyle = C.muted;
-    ctx.fillText("照片：48pedia.org", W - 72, H - 44);
+    ctx.fillText(t("photo_src"), W - 72, H - 44);
 
     try {
       $("#poster-img").src = canvas.toDataURL("image/png");
     } catch (err) {
-      $("#poster-img").alt = "图片生成失败：请通过网址（http://）打开本页，而不是直接双击 html 文件。";
+      $("#poster-img").alt = t("poster_fail");
       console.error(err);
     }
   }
@@ -575,7 +706,33 @@
     }, "image/png");
   }
 
+  function setLang(next) {
+    if (next === lang) return;
+    lang = next;
+    localStorage.setItem("akb-lang", lang);
+    applyStatic();
+    renderRoster();
+    syncSelection();
+    if (!$("#phase-duel").hidden && duel.pair) {
+      fillFighter($("#fighter-a"), BY_ID.get(duel.pair[0]));
+      fillFighter($("#fighter-b"), BY_ID.get(duel.pair[1]));
+    }
+    if (!$("#phase-result").hidden && ranking.length) {
+      $("#rank-list").innerHTML = ranking.map((m, i) => `<li>
+        <span class="no">${i + 1}</span>
+        <img src="${thumbSrc(m)}" alt="">
+        <span class="nm">${esc(m.name)}<span class="meta">${esc(fullMeta(m))}</span></span>
+      </li>`).join("");
+      drawPoster();
+    }
+  }
+
+  document.querySelectorAll(".seg-lang [data-lang]").forEach((b) => {
+    b.addEventListener("click", () => setLang(b.dataset.lang));
+  });
+
   /* ---------------- boot ---------------- */
+  applyStatic();
   renderRoster();
   syncSelection();
 })();
