@@ -168,6 +168,11 @@
     return m.end ? t("grad_year", m.end.slice(0, 4)) : t("graduated");
   }
   function metaText(m) {
+    if (m.group === "本部单曲选拔的分团成员") {
+      if (m.status === "current") return m.note || t("active");
+      if (m.end) return `${m.note} · ${t("grad_year", m.end.slice(0, 4))}`;
+      return m.note || t("graduated");
+    }
     if (m.status === "current") return t("active");
     if (isTransfer(m) && !m.leave) return m.note;
     if (isTransfer(m)) return `${m.note} · ${leaveText(m.leave)}`;
@@ -619,7 +624,11 @@
     ctx.fillStyle = C.ink;
     const nameSize = fitText(ctx, m.name, w + 10, big ? 44 : rank <= 3 ? 32 : 26, 700, JP_FONT);
     ctx.fillText(m.name, x + w / 2, y + h + nameSize + 14);
-    const sub = m.status === "current" ? m.group
+    const sub = m.group === "本部单曲选拔的分团成员"
+      ? (m.status === "current"
+        ? (m.note || m.group)
+        : `${m.note} · ${m.end ? m.end.slice(0, 4) + " " + t("grad_short") : t("grad_short")}`)
+      : m.status === "current" ? m.group
       : isTransfer(m)
         ? (m.leave ? `${m.note} · ${leaveText(m.leave)}` : m.note)
         : m.leave

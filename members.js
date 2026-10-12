@@ -2330,6 +2330,47 @@ window.AKB_GROUPS = [
   ]
  },
  {
+  "label": "22期生",
+  "members": [
+   {
+    "id": "m6ed7d8cfed",
+    "name": "大西ゆな",
+    "kana": "おおにし ゆな",
+    "nick": "ゆーちゃん",
+    "status": "current",
+    "end": null,
+    "img": true
+   },
+   {
+    "id": "m914bbcfc64",
+    "name": "長谷川百々花",
+    "kana": "はせがわ ももか",
+    "nick": "はせもも",
+    "status": "current",
+    "end": null,
+    "img": true
+   },
+   {
+    "id": "m053c7191e8",
+    "name": "前田衣澄",
+    "kana": "まえだ いずみ",
+    "nick": "いず",
+    "status": "current",
+    "end": null,
+    "img": true
+   },
+   {
+    "id": "mbfc38c7796",
+    "name": "山内利乃明",
+    "kana": "やまうち りのあ",
+    "nick": "りのあ",
+    "status": "current",
+    "end": null,
+    "img": true
+   }
+  ]
+ },
+ {
   "label": "Team 8",
   "members": [
    {
@@ -2727,16 +2768,6 @@ window.AKB_GROUPS = [
     "status": "former",
     "end": "2019.05.05",
     "img": true
-   },
-   {
-    "id": "m914bbcfc64",
-    "name": "長谷川百々花",
-    "kana": "はせがわ ももか",
-    "nick": "はせもも",
-    "status": "former",
-    "end": "2021.03.26",
-    "img": true,
-    "leave": "活動辞退"
    },
    {
     "id": "m1d8c251a56",
@@ -3539,6 +3570,491 @@ window.AKB_GROUPS = [
     "img": true,
     "leave": "留学終了",
     "note": "BNK48 1期"
+   }
+  ]
+ },
+ {
+  "label": "本部单曲选拔的分团成员",
+  "members": [
+   {
+    "id": "mcae2bdcb49",
+    "name": "松井珠理奈",
+    "kana": "まつい じゅりな",
+    "nick": "じゅりな",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "SKE48"
+   },
+   {
+    "id": "m0e849444a8",
+    "name": "松井玲奈",
+    "kana": "まつい れな",
+    "nick": "れな",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "SKE48"
+   },
+   {
+    "id": "me08b87a2c2",
+    "name": "北川綾巴",
+    "kana": "きたがわ りょうは",
+    "nick": "りょうは",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "SKE48"
+   },
+   {
+    "id": "mae365a21cf",
+    "name": "古畑奈和",
+    "kana": "ふるはた なお",
+    "nick": "なお",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "SKE48"
+   },
+   {
+    "id": "m43fedffd00",
+    "name": "小畑優奈",
+    "kana": "おばた ゆな",
+    "nick": "ゆなな",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "SKE48"
+   },
+   {
+    "id": "m2c951c7a7d",
+    "name": "須田亜香里",
+    "kana": "すだ あかり",
+    "nick": "あかりん",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "SKE48"
+   },
+   {
+    "id": "mb7204aa56c",
+    "name": "高柳明音",
+    "kana": "たかやなぎ あかね",
+    "nick": "ちゅり",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "SKE48"
+   },
+   {
+    "id": "m971081fa91",
+    "name": "木﨑ゆりあ",
+    "kana": "きざき ゆりあ",
+    "nick": "ゆりあ",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "SKE48"
+   },
+   {
+    "id": "mf846385bf9",
+    "name": "木本花音",
+    "kana": "きもと かのん",
+    "nick": "のん",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "SKE48"
+   },
+   {
+    "id": "m201001be88",
+    "name": "松村香織",
+    "kana": "まつむら かおり",
+    "nick": "かおたん",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "SKE48"
+   },
+   {
+    "id": "m12ce3ff933",
+    "name": "柴田阿弥",
+    "kana": "しばた あや",
+    "nick": "あやちゃん",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "SKE48"
+   },
+   {
+    "id": "mb42cb03d1c",
+    "name": "後藤楽々",
+    "kana": "ごとう らら",
+    "nick": "らら",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "SKE48"
+   },
+   {
+    "id": "mf367d2b8b7",
+    "name": "惣田紗莉渚",
+    "kana": "そうだ さりな",
+    "nick": "さりー",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "SKE48"
+   },
+   {
+    "id": "me9de984b4f",
+    "name": "菅原茉椰",
+    "kana": "すがわら まや",
+    "nick": "まーやん",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "SKE48"
+   },
+   {
+    "id": "mb508c33a6f",
+    "name": "桑原みずき",
+    "kana": "くわばら みずき",
+    "nick": "みぃ",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "SKE48"
+   },
+   {
+    "id": "m0fb41c5e69",
+    "name": "上野圭澄",
+    "kana": "うえの かすみ",
+    "nick": "かすす",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "SKE48"
+   },
+   {
+    "id": "m93b2e4b55a",
+    "name": "山本彩",
+    "kana": "やまもと さやか",
+    "nick": "さやか",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NMB48"
+   },
+   {
+    "id": "me661c2428f",
+    "name": "渡辺美優紀",
+    "kana": "わたなべ みゆき",
+    "nick": "みるきー",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NMB48"
+   },
+   {
+    "id": "m02c1acd061",
+    "name": "山田菜々",
+    "kana": "やまだ なな",
+    "nick": "なな",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NMB48"
+   },
+   {
+    "id": "m504aba56a7",
+    "name": "白間美瑠",
+    "kana": "しろま みる",
+    "nick": "みるるん",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NMB48"
+   },
+   {
+    "id": "mfaec229614",
+    "name": "須藤凜々花",
+    "kana": "すとう りりか",
+    "nick": "りりぽん",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NMB48"
+   },
+   {
+    "id": "m304446e6a5",
+    "name": "渋谷凪咲",
+    "kana": "しぶや なぎさ",
+    "nick": "なぎさ",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NMB48"
+   },
+   {
+    "id": "m610eedc679",
+    "name": "太田夢莉",
+    "kana": "おおた ゆうり",
+    "nick": "ゆーり",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NMB48"
+   },
+   {
+    "id": "medc18c28c3",
+    "name": "吉田朱里",
+    "kana": "よしだ あかり",
+    "nick": "アカリン",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NMB48"
+   },
+   {
+    "id": "m3c1d0315aa",
+    "name": "城恵理子",
+    "kana": "じょう えりこ",
+    "nick": "ジョー",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NMB48"
+   },
+   {
+    "id": "m29dac4463b",
+    "name": "矢倉楓子",
+    "kana": "やぐら ふうこ",
+    "nick": "ふぅちゃん",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NMB48"
+   },
+   {
+    "id": "m45b40d7e7e",
+    "name": "山本彩加",
+    "kana": "やまもと あやか",
+    "nick": "あーやん",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NMB48"
+   },
+   {
+    "id": "m5cbbf65cf2",
+    "name": "薮下柊",
+    "kana": "やぶした しゅう",
+    "nick": "しゅう",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NMB48"
+   },
+   {
+    "id": "m638446c565",
+    "name": "山口夕輝",
+    "kana": "やまぐち ゆうき",
+    "nick": "ゆっぴ",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NMB48"
+   },
+   {
+    "id": "mb4eccb62f6",
+    "name": "肥川彩愛",
+    "kana": "ひかわ あやめ",
+    "nick": "あやにゃん",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NMB48"
+   },
+   {
+    "id": "m84ac83ebcf",
+    "name": "上枝恵美加",
+    "kana": "かみえだ えみか",
+    "nick": "えみち",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NMB48"
+   },
+   {
+    "id": "md0843feb03",
+    "name": "鵜野みずき",
+    "kana": "うの みずき",
+    "nick": "みぃーき",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NMB48"
+   },
+   {
+    "id": "mf64fc89bc7",
+    "name": "宮脇咲良",
+    "kana": "みやわき さくら",
+    "nick": "さくら",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "HKT48"
+   },
+   {
+    "id": "m731e5d210a",
+    "name": "兒玉遥",
+    "kana": "こだま はるか",
+    "nick": "はるっぴ",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "HKT48"
+   },
+   {
+    "id": "m7f373f6732",
+    "name": "田島芽瑠",
+    "kana": "たしま める",
+    "nick": "める",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "HKT48"
+   },
+   {
+    "id": "m20ce126c26",
+    "name": "朝長美桜",
+    "kana": "ともなが みお",
+    "nick": "みお",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "HKT48"
+   },
+   {
+    "id": "mc69785c585",
+    "name": "矢吹奈子",
+    "kana": "やぶき なこ",
+    "nick": "なこ",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "HKT48"
+   },
+   {
+    "id": "m823e1d4cc2",
+    "name": "田中美久",
+    "kana": "たなか みく",
+    "nick": "みくりん",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "HKT48"
+   },
+   {
+    "id": "m7ccc469780",
+    "name": "松岡はな",
+    "kana": "まつおか はな",
+    "nick": "はなちゃん",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "HKT48"
+   },
+   {
+    "id": "m1a3e48bcf3",
+    "name": "森保まどか",
+    "kana": "もりやす まどか",
+    "nick": "まどか",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "HKT48"
+   },
+   {
+    "id": "mcf1cd35fbe",
+    "name": "中井りか",
+    "kana": "なかい りか",
+    "nick": "りかちゃん",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NGT48"
+   },
+   {
+    "id": "m0152d20f04",
+    "name": "本間日陽",
+    "kana": "ほんま ひなた",
+    "nick": "ひなたん",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NGT48"
+   },
+   {
+    "id": "m521ae5fc64",
+    "name": "加藤美南",
+    "kana": "かとう みなみ",
+    "nick": "かとみな",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NGT48"
+   },
+   {
+    "id": "md5c1a80278",
+    "name": "荻野由佳",
+    "kana": "おぎの ゆか",
+    "nick": "おぎゆか",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NGT48"
+   },
+   {
+    "id": "m4406bfc567",
+    "name": "高倉萌香",
+    "kana": "たかくら もえか",
+    "nick": "おかっぱ",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "NGT48"
+   },
+   {
+    "id": "m39cd2c639b",
+    "name": "瀧野由美子",
+    "kana": "たきの ゆみこ",
+    "nick": "ゆみりん",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "STU48"
+   },
+   {
+    "id": "m87c8b6af62",
+    "name": "石田千穂",
+    "kana": "いしだ ちほ",
+    "nick": "ちほ",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "STU48"
+   },
+   {
+    "id": "m87ee5cf831",
+    "name": "生駒里奈",
+    "kana": "いこま りな",
+    "nick": "いこたん",
+    "status": "former",
+    "end": null,
+    "img": true,
+    "note": "乃木坂46"
    }
   ]
  },
