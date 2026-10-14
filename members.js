@@ -593,6 +593,15 @@ window.AKB_GROUPS = [
     "leave": "活動辞退"
    },
    {
+    "id": "m73dd7f4ccb",
+    "name": "佐伯美香",
+    "kana": "さえき みか",
+    "nick": "みかちぃ",
+    "status": "former",
+    "end": "2009.08.23",
+    "img": true
+   },
+   {
     "id": "m8ced0f38a5",
     "name": "佐藤亜美菜",
     "kana": "さとう あみな",

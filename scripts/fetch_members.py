@@ -141,6 +141,23 @@ def skip_member(m):
     return m["name"] == "長谷川百々花" and str(m["join"]).startswith("チーム8")
 
 
+def as_fourth_gen(m):
+    """佐伯美香 debuted as a 4期 member and graduated on 2009-08-23.
+
+    The former-member list only files her later バイトAKB contract (2014–2015),
+    which the baito exclusion would drop. Keep her on the 4期 roster, with her
+    last regular AKB48 portrait rather than the baito headshot.
+    """
+    if m["name"] != "佐伯美香" or not str(m["join"]).startswith("バイトAKB"):
+        return False
+    m["join"] = "4期|AKB48"
+    m["team"] = "B"
+    m["end"] = "2009.08.23"
+    m["leave"] = None
+    m["file"] = "2009年AKB48プロフィール 佐伯美香.jpg"
+    return True
+
+
 def _field(body, key):
     m = re.search(r"\| *" + key + r" *= *(.*)", body)
     if not m:
@@ -324,7 +341,9 @@ def main():
     members = []
     seen = set()
     for m in cur + old:
-        if m["join"].startswith(EXCLUDE) or skip_member(m):
+        if as_fourth_gen(m):
+            print(f"keep {m['name']} as {m['join']}  photo {m['file']}")
+        elif m["join"].startswith(EXCLUDE) or skip_member(m):
             continue
         m["id"] = slug(m["name"] + ("" if m["name"] not in seen else "#" + m["join"]))
         seen.add(m["name"])
